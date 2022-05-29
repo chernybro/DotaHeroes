@@ -29,6 +29,12 @@
         <item name="android:textColor">@color/white80</item>
     </style>
 
-
+    <style name="Theme.WB51.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="cardElevation">8dp</item>
+        <item name="itemRippleColor">?attr/colorPrimary</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="cardCornerRadius">@dimen/radius_big</item>
+    </style>
 
 </resources>

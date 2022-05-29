@@ -9,15 +9,6 @@ data class HeroItem(
     val primaryAttr: HeroAttribute
 )
 
-fun HeroStatsDTO.getFromDTO(primaryAttr: HeroAttribute, avatar: String?): HeroItem {
-    return HeroItem(
-        id = id,
-        name = localized_name,
-        primaryAttr = primaryAttr,
-        avatar = avatar
-    )
-}
-
 enum class HeroAttribute {
     Intelligence, Agility, Strength, Unknown
 }

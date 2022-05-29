@@ -1,12 +1,11 @@
-package com.chernybro.wb51.presentation.hero_list_screen
+package com.chernybro.wb51.presentation.hero_details
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chernybro.wb51.data.remote.service.HeroListApi
-import com.chernybro.wb51.domain.models.HeroItem
+import com.chernybro.wb51.domain.models.HeroDetailsItem
 import com.chernybro.wb51.presentation.models.ScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -14,23 +13,19 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HeroesListViewModel @Inject constructor(
+class HeroDetailsViewModel @Inject constructor(
     private val heroListApi: HeroListApi
 ) : ViewModel() {
-    private val _items: MutableLiveData<List<HeroItem>> = MutableLiveData(listOf())
-    val items: LiveData<List<HeroItem>> = _items
+    private val _heroDetails: MutableLiveData<HeroDetailsItem> = MutableLiveData()
+    val heroDetails: LiveData<HeroDetailsItem> = _heroDetails
 
     private val _errorMessage: MutableLiveData<Int> = MutableLiveData()
     val errorMessage: LiveData<Int> = _errorMessage
 
-    init {
-        fetchHeroes()
-    }
-
-    fun fetchHeroes(){
+    fun getHeroDetails(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            when (val state = heroListApi.getHeroes()) {
-                is ScreenState.Success -> _items.postValue(state.data)
+            when (val state = heroListApi.getHero(id)) {
+                is ScreenState.Success -> _heroDetails.postValue(state.data)
                 is ScreenState.Error -> _errorMessage.postValue(state.error)
             }
         }

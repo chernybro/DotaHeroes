@@ -17,6 +17,7 @@
             android:layout_height="?attr/actionBarSize">
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/toolbar_title"
                 android:layout_width="wrap_content"
                 android:textAppearance="@style/Theme.WB51.Toolbar.TitleTextAppearance"
                 android:text="@string/dota_heroes_label"

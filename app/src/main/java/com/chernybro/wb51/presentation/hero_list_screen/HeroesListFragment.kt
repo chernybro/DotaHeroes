@@ -7,12 +7,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.chernybro.wb51.R
 import com.chernybro.wb51.databinding.FragmentHeroesListBinding
+import com.chernybro.wb51.domain.models.HeroItem
+import com.chernybro.wb51.presentation.BaseFragment
+import com.chernybro.wb51.presentation.hero_details.HeroDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HeroesListFragment : Fragment() {
+class HeroesListFragment : Fragment(), BaseFragment {
 
     private var _binding: FragmentHeroesListBinding? = null
     private val binding get() = _binding!!
@@ -22,12 +27,22 @@ class HeroesListFragment : Fragment() {
 
     private val vm: HeroesListViewModel by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        adapter.attachClickHandler(object :HeroClickHandler {
+            override fun onItemClick(item: HeroItem) {
+                val bundle = Bundle()
+                bundle.putInt(HeroDetailsFragment.KEY_HERO_ID, item.id)
+                bundle.putString(HeroDetailsFragment.KEY_HERO_NAME, item.name)
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentHeroesListBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -43,6 +58,12 @@ class HeroesListFragment : Fragment() {
         configureObserving()
     }
 
+    override fun onStart() {
+        super.onStart()
+        (activity as MainActivity).setToolbarTitle(getFragmentTitle())
+    }
+
+
     private fun configureObserving(){
         vm.items.observe(viewLifecycleOwner) { items ->
             adapter.setData(items)
@@ -57,5 +78,9 @@ class HeroesListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun getFragmentTitle(): String {
+        return getString(R.string.dota_heroes_label)
     }
 }

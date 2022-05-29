@@ -25,7 +25,7 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="16dp" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/banner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/mock_hero_img" />
+            tools:src="@drawable/mock_hero_img" />
 
         <TextView
             android:id="@+id/hero_name"
@@ -54,10 +54,10 @@
             android:id="@+id/tv_attack_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Melee"
             android:textAppearance="@style/Theme.WB51.HeadlineSmall.TextAppearance"
             app:layout_constraintStart_toStartOf="@id/start_guideline"
-            app:layout_constraintTop_toBottomOf="@id/hero_name" />
+            app:layout_constraintTop_toBottomOf="@id/hero_name"
+            tools:text="Melee" />
 
 
         <TextView
@@ -65,10 +65,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_normal"
-            android:text="Health&amp;Mana"
+            android:text="@string/health_mana_label"
             android:textAppearance="@style/Theme.WB51.HeadlineSmall.TextAppearance"
-            app:layout_constraintEnd_toEndOf="@id/end_guideline"
-            app:layout_constraintBaseline_toBaselineOf="@id/hero_name" />
+            app:layout_constraintBaseline_toBaselineOf="@id/hero_name"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline" />
 
         <TextView
             android:id="@+id/tv_health"
@@ -77,13 +77,14 @@
             android:layout_marginTop="@dimen/margin_small"
             android:background="@drawable/bg_round"
             android:backgroundTint="@color/green"
-            android:text="580"
+            android:paddingVertical="1dp"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textColor="?attr/background"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/tv_health_mana"
             app:layout_constraintStart_toStartOf="@id/tv_health_mana"
-            app:layout_constraintTop_toBottomOf="@id/tv_health_mana" />
+            app:layout_constraintTop_toBottomOf="@id/tv_health_mana"
+            tools:text="580" />
 
         <TextView
             android:id="@+id/tv_mana"
@@ -92,20 +93,21 @@
             android:layout_marginTop="@dimen/margin_small"
             android:background="@drawable/bg_round"
             android:backgroundTint="@color/blue"
-            android:text="315"
+            android:paddingVertical="1dp"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textColor="?attr/background"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/tv_health_mana"
             app:layout_constraintStart_toStartOf="@id/tv_health_mana"
-            app:layout_constraintTop_toBottomOf="@id/tv_health" />
+            app:layout_constraintTop_toBottomOf="@id/tv_health"
+            tools:text="315" />
 
         <TextView
             android:id="@+id/tv_stats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_normal"
-            android:text="Stats"
+            android:text="@string/stats_label"
             android:textAppearance="@style/Theme.WB51.HeadlineMedium.TextAppearance"
             app:layout_constraintStart_toStartOf="@id/start_guideline"
             app:layout_constraintTop_toBottomOf="@id/tv_mana" />
@@ -114,23 +116,23 @@
             android:id="@+id/tv_attributes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Attributes"
+            android:text="@string/attributes_label"
             android:textAppearance="@style/Theme.WB51.HeadlineSmall.TextAppearance"
             app:layout_constraintStart_toStartOf="@id/start_guideline"
             app:layout_constraintTop_toBottomOf="@id/tv_stats" />
 
 
         <TextView
-            android:id="@+id/tv_intelect_stats"
+            android:id="@+id/tv_intelligence_stats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_nano"
             android:drawablePadding="@dimen/margin_nano"
-            android:text="19 + 2.4 per level"
             android:textAppearance="@style/Theme.WB51.BodyMedium.TextAppearance"
-            app:drawableLeftCompat="@drawable/ic_intelect"
+            app:drawableLeftCompat="@drawable/ic_intelligence"
             app:layout_constraintStart_toStartOf="@id/start_guideline"
-            app:layout_constraintTop_toBottomOf="@id/tv_attributes" />
+            app:layout_constraintTop_toBottomOf="@id/tv_attributes"
+            tools:text="19 + 2.4 per level" />
 
         <TextView
             android:id="@+id/tv_strength_stats"
@@ -138,11 +140,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_nano"
             android:drawablePadding="@dimen/margin_nano"
-            android:text="14 + 1.0 per level"
             android:textAppearance="@style/Theme.WB51.BodyMedium.TextAppearance"
-            app:drawableLeftCompat="@drawable/ic_fist"
+            app:drawableLeftCompat="@drawable/ic_strength"
             app:layout_constraintStart_toStartOf="@id/start_guideline"
-            app:layout_constraintTop_toBottomOf="@id/tv_intelect_stats" />
+            app:layout_constraintTop_toBottomOf="@id/tv_intelligence_stats"
+            tools:text="14 + 1.0 per level" />
 
         <TextView
             android:id="@+id/tv_agility_stats"
@@ -150,17 +152,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_nano"
             android:drawablePadding="@dimen/margin_nano"
-            android:text="15 + 1.4 per level"
             android:textAppearance="@style/Theme.WB51.BodyMedium.TextAppearance"
-            app:drawableLeftCompat="@drawable/ic_agility"
+            app:drawableLeftCompat="@drawable/ic_agility_2"
             app:layout_constraintStart_toStartOf="@id/start_guideline"
-            app:layout_constraintTop_toBottomOf="@id/tv_strength_stats" />
+            app:layout_constraintTop_toBottomOf="@id/tv_strength_stats"
+            tools:text="15 + 1.4 per level" />
 
         <TextView
             android:id="@+id/tv_attack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Attack"
+            android:text="@string/attack_label"
             android:textAppearance="@style/Theme.WB51.HeadlineSmall.TextAppearance"
             app:layout_constraintEnd_toEndOf="@id/end_guideline"
             app:layout_constraintStart_toEndOf="@id/tv_attributes"
@@ -172,11 +174,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_nano"
             android:drawablePadding="@dimen/margin_nano"
-            android:text="29-33"
             android:textAppearance="@style/Theme.WB51.BodyMedium.TextAppearance"
             app:drawableLeftCompat="@drawable/ic_sword"
             app:layout_constraintStart_toStartOf="@id/tv_attack"
-            app:layout_constraintTop_toBottomOf="@id/tv_attack" />
+            app:layout_constraintTop_toBottomOf="@id/tv_attack"
+            tools:text="29-33" />
 
         <TextView
             android:id="@+id/tv_attack_rate"
@@ -184,11 +186,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_nano"
             android:drawablePadding="@dimen/margin_nano"
-            android:text="1.6"
             android:textAppearance="@style/Theme.WB51.BodyMedium.TextAppearance"
             app:drawableLeftCompat="@drawable/ic_glove"
             app:layout_constraintStart_toStartOf="@id/tv_attack"
-            app:layout_constraintTop_toBottomOf="@id/tv_attack_max_min" />
+            app:layout_constraintTop_toBottomOf="@id/tv_attack_max_min"
+            tools:text="1.6" />
 
         <TextView
             android:id="@+id/tv_attack_range"
@@ -196,18 +198,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_nano"
             android:drawablePadding="@dimen/margin_nano"
-            android:text="150"
             android:textAppearance="@style/Theme.WB51.BodyMedium.TextAppearance"
             app:drawableLeftCompat="@drawable/ic_distance"
             app:layout_constraintStart_toStartOf="@id/tv_attack"
-            app:layout_constraintTop_toBottomOf="@id/tv_attack_rate" />
+            app:layout_constraintTop_toBottomOf="@id/tv_attack_rate"
+            tools:text="150" />
 
         <TextView
             android:id="@+id/tv_defence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
-            android:text="Defence"
+            android:text="@string/defence_label"
             android:textAppearance="@style/Theme.WB51.HeadlineSmall.TextAppearance"
             app:layout_constraintStart_toStartOf="@id/start_guideline"
             app:layout_constraintTop_toBottomOf="@id/tv_agility_stats" />
@@ -218,11 +220,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_nano"
             android:drawablePadding="@dimen/margin_nano"
-            android:text="4.3"
             android:textAppearance="@style/Theme.WB51.BodyMedium.TextAppearance"
             app:drawableLeftCompat="@drawable/ic_shield"
             app:layout_constraintStart_toStartOf="@id/tv_defence"
-            app:layout_constraintTop_toBottomOf="@id/tv_defence" />
+            app:layout_constraintTop_toBottomOf="@id/tv_defence"
+            tools:text="4.3" />
 
         <TextView
             android:id="@+id/tv_defence_percent"
@@ -230,11 +232,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_nano"
             android:drawablePadding="@dimen/margin_nano"
-            android:text="25%"
-            android:drawableLeft="@drawable/ic_cape"
             android:textAppearance="@style/Theme.WB51.BodyMedium.TextAppearance"
+            app:drawableLeftCompat="@drawable/ic_cape"
             app:layout_constraintStart_toStartOf="@id/tv_defence"
-            app:layout_constraintTop_toBottomOf="@id/tv_defence_rate" />
+            app:layout_constraintTop_toBottomOf="@id/tv_defence_rate"
+            tools:text="25%" />
 
 
         <TextView
@@ -242,7 +244,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
-            android:text="Mobility"
+            android:text="@string/mobility_label"
             android:textAppearance="@style/Theme.WB51.HeadlineSmall.TextAppearance"
             app:layout_constraintEnd_toEndOf="@id/end_guideline"
             app:layout_constraintStart_toStartOf="@id/start_guideline"
@@ -254,11 +256,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_nano"
             android:drawablePadding="@dimen/margin_nano"
-            android:text="300"
             android:textAppearance="@style/Theme.WB51.BodyMedium.TextAppearance"
-            app:drawableLeftCompat="@drawable/ic_fast"
+            app:drawableLeftCompat="@drawable/ic_agility"
             app:layout_constraintStart_toStartOf="@id/tv_mobility"
-            app:layout_constraintTop_toBottomOf="@id/tv_mobility" />
+            app:layout_constraintTop_toBottomOf="@id/tv_mobility"
+            tools:text="300" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

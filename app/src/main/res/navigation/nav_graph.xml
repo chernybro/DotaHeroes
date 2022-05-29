@@ -22,5 +22,9 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/HeroesListFragment" />
+        <argument
+            android:name="heroId"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
 </navigation>
