@@ -67,7 +67,7 @@
             android:layout_marginEnd="@dimen/margin_normal"
             android:text="@string/health_mana_label"
             android:textAppearance="@style/Theme.WB51.HeadlineSmall.TextAppearance"
-            app:layout_constraintBaseline_toBaselineOf="@id/hero_name"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_attack_type"
             app:layout_constraintEnd_toEndOf="@id/end_guideline" />
 
         <TextView
@@ -106,7 +106,6 @@
             android:id="@+id/tv_stats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_normal"
             android:text="@string/stats_label"
             android:textAppearance="@style/Theme.WB51.HeadlineMedium.TextAppearance"
             app:layout_constraintStart_toStartOf="@id/start_guideline"
