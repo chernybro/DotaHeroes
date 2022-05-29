@@ -20,7 +20,10 @@
         <item name="colorError">@color/red</item>
         <item name="colorErrorContainer">@color/pink_light</item>
         <item name="colorOnError">@color/almost_white</item>
+
+        <item name="android:statusBarColor">?attr/colorTertiary</item>
     </style>
 
     <style name="Theme.WB51" parent="Base.Theme.WB51" />
+
 </resources>

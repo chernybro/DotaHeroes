@@ -3,26 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/HeroesListFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.chernybro.wb51.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/HeroesListFragment"
+        android:name="com.chernybro.wb51.presentation.hero_list_screen.HeroesListFragment"
+        tools:layout="@layout/fragment_heroes_list">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/HeroDetails" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.chernybro.wb51.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/HeroDetails"
+        android:name="com.chernybro.wb51.presentation.hero_details.HeroDetailsFragment"
+        tools:layout="@layout/fragment_hero_details">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/HeroesListFragment" />
     </fragment>
 </navigation>
