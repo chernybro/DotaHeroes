@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginStart="@dimen/margin_small"
-            android:text="Name Surname"
+            tools:text="Name Surname"
             android:textAppearance="@style/Theme.WB51.HeadlineMedium.TextAppearance"
             app:layout_constraintEnd_toStartOf="@id/iv_primary_attr"
             app:layout_constraintStart_toEndOf="@id/iv_icon"

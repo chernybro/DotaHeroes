@@ -38,15 +38,13 @@ class HeroDetailsFragment : Fragment(), BaseFragment {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        (activity as MainActivity).setToolbarTitle(arguments?.getString(KEY_HERO_NAME, getFragmentTitle()) ?: getFragmentTitle())
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.getInt(KEY_HERO_ID)?.let { vm.getHeroDetails(it) }
-        (activity as MainActivity).setToolbarTitle(
-            arguments?.getString(
-                KEY_HERO_NAME,
-                getFragmentTitle()
-            ) ?: getFragmentTitle()
-        )
 
         vm.heroDetails.observe(viewLifecycleOwner) { hero ->
             binding.apply {
