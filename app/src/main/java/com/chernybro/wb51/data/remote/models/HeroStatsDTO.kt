@@ -2,38 +2,63 @@ package com.chernybro.wb51.data.remote.models
 
 import com.chernybro.wb51.domain.models.*
 import com.chernybro.wb51.utils.Constants
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class HeroStatsDTO(
-    val agi_gain: Double,
-    val attack_range: Int,
-    val attack_rate: Double,
-    val attack_type: String,
-    val base_agi: Int,
-    val base_armor: Double,
-    val base_attack_max: Int,
-    val base_attack_min: Int,
-    val base_health: Int,
-    val base_health_regen: Double,
-    val base_int: Int,
-    val base_mana: Int,
-    val base_mana_regen: Double,
-    val base_mr: Int,
-    val base_str: Int,
-    val hero_id: Int,
+    @Json(name = "agi_gain")
+    val agilityGain: Double,
+    @Json(name = "attack_range")
+    val attackRange: Int,
+    @Json(name = "attack_rate")
+    val attackRate: Double,
+    @Json(name = "attack_type")
+    val attackType: String,
+    @Json(name = "base_agi")
+    val baseAgility: Int,
+    @Json(name = "base_armor")
+    val baseArmor: Double,
+    @Json(name = "base_attack_max")
+    val baseAttackMax: Int,
+    @Json(name = "base_attack_min")
+    val baseAttackMin: Int,
+    @Json(name = "base_health")
+    val baseHealth: Int,
+    @Json(name = "base_health_regen")
+    val baseHealthRegen: Double,
+    @Json(name = "base_int")
+    val baseIntelligence: Int,
+    @Json(name = "base_mana")
+    val baseMana: Int,
+    @Json(name = "base_mana_regen")
+    val baseManaRegen: Double,
+    @Json(name = "base_mr")
+    val baseMagicResistant: Int,
+    @Json(name = "base_str")
+    val baseStrength: Int,
+    @Json(name = "hero_id")
+    val heroId: Int,
+    @Json(name = "icon")
     val icon: String,
+    @Json(name = "id")
     val id: Int,
+    @Json(name = "img")
     val img: String,
-    val int_gain: Double,
-    val localized_name: String,
-    val move_speed: Int,
-    val primary_attr: String,
-    val str_gain: Double
+    @Json(name = "int_gain")
+    val intelligenceGain: Double,
+    @Json(name = "localized_name")
+    val localizedName: String,
+    @Json(name = "move_speed")
+    val moveSpeed: Int,
+    @Json(name = "primary_attr")
+    val primaryAttr: String,
+    @Json(name = "str_gain")
+    val strengthGain: Double
 )
 
 fun HeroStatsDTO.getHeroItemFromDTO(): HeroItem {
-    val attribute = when (this.primary_attr) {
+    val attribute = when (this.primaryAttr) {
         "agi" -> HeroAttribute.Agility
         "str" -> HeroAttribute.Strength
         "int" -> HeroAttribute.Intelligence
@@ -41,7 +66,7 @@ fun HeroStatsDTO.getHeroItemFromDTO(): HeroItem {
     }
     return HeroItem(
         id = id,
-        name = localized_name,
+        name = localizedName,
         primaryAttr = attribute,
         avatar = Constants.HEROES_IMAGES_BASE + this.icon.substring(1)
     )
@@ -50,44 +75,44 @@ fun HeroStatsDTO.getHeroItemFromDTO(): HeroItem {
 fun HeroStatsDTO.getHeroDetailsFromDTO(): HeroDetailsItem {
     return HeroDetailsItem(
         id = id,
-        name = localized_name,
+        name = localizedName,
         imageUrl = Constants.HEROES_IMAGES_BASE + this.img.substring(1),
         mana = HeroMana(
-            baseValue = base_mana,
-            regen = base_mana_regen
+            baseValue = baseMana,
+            regen = baseManaRegen
         ),
         health = HeroHealth(
-            baseValue = base_health,
-            regen = base_health_regen
+            baseValue = baseHealth,
+            regen = baseHealthRegen
         ),
         stats = HeroStats(
             attributes = HeroAttributes(
                 agility = HeroAgility(
-                    gain = agi_gain,
-                    base = base_agi
+                    gain = agilityGain,
+                    base = baseAgility
                 ),
                 intelligence = HeroIntelligence(
-                    gain = int_gain,
-                    base = base_int
+                    gain = intelligenceGain,
+                    base = baseIntelligence
                 ),
                 strength = HeroStrength(
-                    gain = str_gain,
-                    base = base_str
+                    gain = strengthGain,
+                    base = baseStrength
                 )
             ),
             mobility = HeroMobility(
-                speed = move_speed
+                speed = moveSpeed
             ),
             attack = HeroAttack(
-                min = base_attack_min,
-                max = base_attack_max,
-                rate = attack_rate,
-                range = attack_range,
-                type = attack_type
+                min = baseAttackMin,
+                max = baseAttackMax,
+                rate = attackRate,
+                range = attackRange,
+                type = attackType
             ),
             defence = HeroDefence(
-                magicResistant = base_mr,
-                armor = base_armor
+                magicResistant = baseMagicResistant,
+                armor = baseArmor
             )
         )
     )
